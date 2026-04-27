@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!--
+  📚 LESSON: What is HTML?
+  HTML = HyperText Markup Language
+  It's the SKELETON of a website. 
+  Tags like <h1>, <p>, <div> tell the browser what each thing IS.
+  <!DOCTYPE html> tells the browser: "Hey, this is a modern HTML5 page!"
+-->
+<html lang="en">
+<head>
+  <!--
+    📚 The <head> section is INVISIBLE to users.
+    It contains settings, links to styles, and page information.
+  -->
+  <meta charset="UTF-8">  <!-- Allows emojis and special characters -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Makes site mobile-friendly -->
+  <title>Ikigai for Teens — Discover Your Career Path with AI</title>
+
+  <!-- SEO: These tags help Google find and display your site correctly -->
+  <meta name="description" content="Ikigai for Teens is an AI-powered career discovery platform. Answer a few questions and find the perfect career path tailored to your interests, skills, and values.">
+  <meta name="keywords" content="career test, teen career, ikigai, career AI, career quiz">
+  <meta property="og:title" content="Ikigai for Teens — Career AI">
+  <meta property="og:description" content="Discover your ideal career through the ancient Japanese concept of Ikigai + modern AI.">
+
+  <!-- Link to CSS stylesheet (styles.css makes things look pretty) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google Fonts are loaded in styles.css via @import -->
+</head>
+
+<body>
+  <!--
+    📚 The <body> is the VISIBLE part of your website.
+    Everything inside <body> appears on screen.
+  -->
+
+  <!-- ═══════════════════════════════════════════
+       NAVBAR — Appears on EVERY page
+       ═══════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <!-- Logo — clicking it returns to home -->
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon">🌸</span>
+      Ikigai<span style="color: var(--text-secondary); font-weight: 400;"> for Teens</span>
+    </a>
+
+    <!-- Navigation Links — <ul> = unordered list, <li> = list item, <a> = anchor/link -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active" id="nav-home">Home</a></li>
+      <li><a href="about.html" id="nav-about">About</a></li>
+      <li><a href="assessment.html" id="nav-assess">Assessment</a></li>
+      <li><a href="results.html" id="nav-results">Results</a></li>
+      <li><a href="resources.html" id="nav-resources">Resources</a></li>
+      <li><a href="contact.html" id="nav-contact">Contact</a></li>
+      <!-- CTA Button -->
+      <li>
+        <a href="assessment.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">
+          🚀 Start Quiz
+        </a>
+      </li>
+    </ul>
+
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <!-- Dark Mode Toggle Button -->
+      <button class="dark-mode-btn" id="darkModeBtn" title="Toggle dark/light mode" aria-label="Toggle theme">
+        🌙
+      </button>
+      <!-- Hamburger menu for mobile -->
+      <div class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO SECTION — Big banner seen first
+       ═══════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <!-- Badge -->
+      <div class="hero-badge">
+        <span>✨</span>
+        AI-Powered Career Discovery for Teens
+      </div>
+
+      <!-- Main Heading — <h1> is the MOST important heading on the page -->
+      <h1>
+        Find Your <span class="gradient-text">Ikigai</span><br>
+        Discover Your Purpose
+      </h1>
+
+      <!-- Subheading / Description -->
+      <p>
+        Ikigai (生き甲斐) is the Japanese concept of "reason for being." 
+        Answer a few smart questions and our AI will map your interests, 
+        skills, and values to the perfect career path — just for you. 🎯
+      </p>
+
+      <!-- Call-to-action buttons -->
+      <div class="hero-buttons">
+        <!-- href="assessment.html" links to the assessment page -->
+        <a href="assessment.html" class="btn btn-primary" id="startQuizBtn">
+          🎯 Discover My Career
+        </a>
+        <a href="about.html" class="btn btn-secondary" id="learnMoreBtn">
+          📖 Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       STATS STRIP
+       ═══════════════════════════════════════════ -->
+  <section style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 30px 5%;">
+    <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; text-align: center;">
+      <div class="reveal">
+        <div style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800;" class="text-gradient">50+</div>
+        <div style="color: var(--text-secondary); font-size: 0.88rem;">Career Paths</div>
+      </div>
+      <div class="reveal stagger-1">
+        <div style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800;" class="text-gradient">10K+</div>
+        <div style="color: var(--text-secondary); font-size: 0.88rem;">Teens Guided</div>
+      </div>
+      <div class="reveal stagger-2">
+        <div style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800;" class="text-gradient">95%</div>
+        <div style="color: var(--text-secondary); font-size: 0.88rem;">Accuracy Rate</div>
+      </div>
+      <div class="reveal stagger-3">
+        <div style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800;" class="text-gradient">Free</div>
+        <div style="color: var(--text-secondary); font-size: 0.88rem;">Always Free</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FEATURES SECTION
+       ═══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-tag">✨ Why Ikigai?</div>
+      <h2>Built for <span class="gradient-text">Your Future</span></h2>
+      <p>We combine the 2,500-year-old wisdom of Ikigai with modern AI to give you clarity on your career path.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal stagger-1">
+        <div class="card-icon">🧠</div>
+        <h3>Smart Assessment</h3>
+        <p>Our adaptive quiz learns from each answer to ask smarter follow-up questions. No two assessments are identical.</p>
+      </div>
+      <div class="card reveal stagger-2">
+        <div class="card-icon">🎯</div>
+        <h3>Personalized Results</h3>
+        <p>Get a detailed career profile with salary ranges, growth outlook, and your unique ikigai score for each path.</p>
+      </div>
+      <div class="card reveal stagger-3">
+        <div class="card-icon">🗺️</div>
+        <h3>Roadmap to Success</h3>
+        <p>Every result comes with a step-by-step learning roadmap — from high school to your dream career.</p>
+      </div>
+      <div class="card reveal stagger-1">
+        <div class="card-icon">🌍</div>
+        <h3>Real-World Data</h3>
+        <p>Career insights are powered by real labor market data, industry trends, and salary statistics.</p>
+      </div>
+      <div class="card reveal stagger-2">
+        <div class="card-icon">🔒</div>
+        <h3>Private & Secure</h3>
+        <p>Your answers are processed securely. We never sell your data or share it with third parties.</p>
+      </div>
+      <div class="card reveal stagger-3">
+        <div class="card-icon">🚀</div>
+        <h3>Always Learning</h3>
+        <p>Our AI improves with every assessment. The more teenagers use Ikigai, the smarter it becomes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       HOW IT WORKS SECTION
+       ═══════════════════════════════════════════ -->
+  <section style="padding: 80px 5%; background: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div class="section-header">
+        <div class="section-tag">📋 Process</div>
+        <h2>How It <span class="gradient-text">Works</span></h2>
+        <p>Three simple steps to discover your ideal career.</p>
+      </div>
+
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+        <!-- Step cards -->
+        <div style="flex: 1; min-width: 220px; max-width: 320px; text-align: center;" class="reveal">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-purple); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 20px; box-shadow: 0 0 30px rgba(124,58,237,0.4);">1</div>
+          <h3 style="margin-bottom: 8px;">Answer Questions</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Answer ~12 adaptive questions about what you love, what you're good at, and what matters to you.</p>
+        </div>
+        <div style="flex: 0; display: flex; align-items: center; font-size: 2rem; color: var(--text-muted); padding-top: 0; align-self: flex-start; margin-top: 20px;">→</div>
+        <div style="flex: 1; min-width: 220px; max-width: 320px; text-align: center;" class="reveal stagger-1">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #f59e0b); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 20px; box-shadow: 0 0 30px rgba(236,72,153,0.4);">2</div>
+          <h3 style="margin-bottom: 8px;">AI Analyzes</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Our engine maps your answers to the four pillars of Ikigai and calculates match scores for 50+ careers.</p>
+        </div>
+        <div style="flex: 0; display: flex; align-items: center; font-size: 2rem; color: var(--text-muted); padding-top: 0; align-self: flex-start; margin-top: 20px;">→</div>
+        <div style="flex: 1; min-width: 220px; max-width: 320px; text-align: center;" class="reveal stagger-2">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 20px; box-shadow: 0 0 30px rgba(6,182,212,0.4);">3</div>
+          <h3 style="margin-bottom: 8px;">Get Your Results</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Receive your personalized career profile with top matches, salary data, and a step-by-step roadmap.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-tag">💬 Stories</div>
+      <h2>Real Teens, <span class="gradient-text">Real Results</span></h2>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: var(--gradient-purple); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">👦</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Arjun, 16</div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">Now studying CS 🎓</div>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">"I had no idea what to do after school. Ikigai matched me with software development and I got into a coding bootcamp the same month!"</p>
+        <div style="margin-top: 14px; color: var(--accent-orange);">★★★★★</div>
+      </div>
+      <div class="card reveal stagger-1">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: var(--gradient-orange); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">👧</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Priya, 17</div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">Future doctor 🩺</div>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">"The assessment asked me things no career counselor ever did — about what I find meaningful. It recommended medicine and I felt it deeply."</p>
+        <div style="margin-top: 14px; color: var(--accent-orange);">★★★★★</div>
+      </div>
+      <div class="card reveal stagger-2">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: var(--gradient-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🧑</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Raza, 15</div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">Budding designer 🎨</div>
+          </div>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">"I always loved drawing but thought it wasn't a real career. Ikigai showed me UX Design — a job where I get paid to draw. Mind blown! 🤯"</p>
+        <div style="margin-top: 14px; color: var(--accent-orange);">★★★★★</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CTA SECTION
+       ═══════════════════════════════════════════ -->
+  <section style="padding: 80px 5%; text-align: center; background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(6,182,212,0.1)); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div style="max-width: 600px; margin: 0 auto;" class="reveal">
+      <div style="font-size: 3rem; margin-bottom: 16px;">🌸</div>
+      <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 16px;">Ready to Find Your <span class="gradient-text">Ikigai</span>?</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 32px;">It takes less than 5 minutes. No sign-up required. 100% free forever.</p>
+      <a href="assessment.html" class="btn btn-primary" id="heroCtaBtn" style="font-size: 1.05rem; padding: 16px 40px;">
+        🎯 Start Your Journey
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 12px;">
+          <span class="nav-logo-icon">🌸</span>
+          Ikigai for Teens
+        </div>
+        <p>Helping teenagers around the world discover their purpose through the ancient wisdom of Ikigai and modern AI technology.</p>
+        <div style="display: flex; gap: 12px; margin-top: 20px;">
+          <a href="#" style="color: var(--text-muted); font-size: 1.2rem; text-decoration: none;" aria-label="Twitter">🐦</a>
+          <a href="#" style="color: var(--text-muted); font-size: 1.2rem; text-decoration: none;" aria-label="Instagram">📸</a>
+          <a href="#" style="color: var(--text-muted); font-size: 1.2rem; text-decoration: none;" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="assessment.html">Take Assessment</a>
+        <a href="results.html">View Results</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">How It Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+      <div class="footer-col">
+        <h4>Careers</h4>
+        <a href="#">Technology</a>
+        <a href="#">Healthcare</a>
+        <a href="#">Creative Arts</a>
+        <a href="#">Business</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Ikigai for Teens. Made with ❤️ to help the next generation find their purpose.</p>
+    </div>
+  </footer>
+
+  <!-- Loading overlay (used when submitting form) -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingText">Analyzing your profile...</div>
+  </div>
+
+  <!-- Toast notification container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!--
+    📚 <script> at the bottom = JavaScript file
+    We put it at the BOTTOM so the HTML loads first, then JS runs.
+    src="script.js" links to our JavaScript file.
+  -->
+  <script src="script.js"></script>
+</body>
+</html>

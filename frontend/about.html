@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Ikigai — Ikigai for Teens</title>
+  <meta name="description" content="Learn about the Japanese philosophy of Ikigai and how we use AI to help teenagers find their perfect career path.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR (same on every page) -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon">🌸</span>
+      Ikigai<span style="color: var(--text-secondary); font-weight: 400;"> for Teens</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="about.html" class="active" id="nav-about">About</a></li>
+      <li><a href="assessment.html" id="nav-assess">Assessment</a></li>
+      <li><a href="results.html" id="nav-results">Results</a></li>
+      <li><a href="resources.html" id="nav-resources">Resources</a></li>
+      <li><a href="contact.html" id="nav-contact">Contact</a></li>
+      <li><a href="assessment.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">🚀 Start Quiz</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="dark-mode-btn" id="darkModeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-badge" style="justify-content: center;"><span>🌸</span> The Philosophy</div>
+    <h1>What is <span class="gradient-text">Ikigai</span>?</h1>
+    <p>A 2,500-year-old Japanese concept that shows you the sweet spot where passion, mission, vocation, and profession meet.</p>
+  </section>
+
+  <!-- IKIGAI EXPLANATION SECTION -->
+  <section class="section">
+    <div class="grid-2" style="align-items: center; gap: 60px;">
+      <!-- Visual Venn Diagram -->
+      <div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; padding: 40px; position: relative; overflow: hidden;">
+          <!-- Venn Circles -->
+          <div style="position: relative; height: 300px; margin: 0 auto; max-width: 300px;">
+            
+            <!-- Top circle: What you LOVE -->
+            <div style="position: absolute; width: 180px; height:180px; border-radius: 50%; background: rgba(124,58,237,0.18); border: 2px solid rgba(124,58,237,0.4); top: 0; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px; flex-direction: column; font-size: 0.75rem; font-weight: 700; color: var(--accent-violet); flex: 1; cursor: default; transition: all 0.3s;">
+              <div style="font-size: 1.8rem;">❤️</div>
+              <div>What You<br>LOVE</div>
+            </div>
+            
+            <!-- Bottom-left: What you're GOOD AT -->
+            <div style="position: absolute; width: 180px; height:180px; border-radius: 50%; background: rgba(236,72,153,0.15); border: 2px solid rgba(236,72,153,0.4); bottom: 0; left: 5px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px; flex-direction: column; font-size: 0.75rem; font-weight: 700; color: var(--accent-pink); cursor: default; transition: all 0.3s;">
+              <div style="font-size: 1.8rem;">💪</div>
+              <div>What You're<br>GOOD AT</div>
+            </div>
+            
+            <!-- Bottom-right: What the world NEEDS -->
+            <div style="position: absolute; width: 180px; height:180px; border-radius: 50%; background: rgba(6,182,212,0.15); border: 2px solid rgba(6,182,212,0.4); bottom: 0; right: 5px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px; flex-direction: column; font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); cursor: default; transition: all 0.3s;">
+              <div style="font-size: 1.8rem;">🌍</div>
+              <div>What the<br>World NEEDS</div>
+            </div>
+
+            <!-- Center label -->
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -52%); text-align: center; z-index: 2; background: var(--bg-secondary); border-radius: 50%; width: 80px; height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid rgba(124,58,237,0.5); box-shadow: 0 0 20px rgba(124,58,237,0.3);">
+              <div style="font-size: 1.4rem;">🌸</div>
+              <div style="font-size: 0.65rem; font-weight: 800; color: var(--accent-violet);">IKIGAI</div>
+            </div>
+          </div>
+          
+          <!-- Fourth circle: What you can be PAID FOR -->
+          <div style="text-align: center; margin-top: 12px; padding: 14px 24px; background: rgba(16,185,129,0.12); border: 2px solid rgba(16,185,129,0.35); border-radius: 14px; font-size: 0.8rem; font-weight: 700; color: var(--accent-green);">
+            💰 What You Can Be PAID FOR
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Explanation -->
+      <div>
+        <div class="section-tag" style="margin-bottom: 16px;">📖 Understanding Ikigai</div>
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 20px;">Your <span class="gradient-text">Sweet Spot</span> Exists</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px; line-height: 1.8;">
+          In the Japanese island of Okinawa — home to the world's longest-living people — Ikigai (ee-key-guy) means "reason for being." 
+          It's the place where four elements come together:
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px;">
+            <span style="font-size: 1.3rem; flex-shrink: 0;">❤️</span>
+            <div>
+              <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Passion — What you Love</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">Activities that make you lose track of time. Things that excite and energize you.</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: rgba(236,72,153,0.08); border: 1px solid rgba(236,72,153,0.2); border-radius: 12px;">
+            <span style="font-size: 1.3rem; flex-shrink: 0;">💪</span>
+            <div>
+              <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Profession — What You're Good At</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">Your natural talents and learned skills. What others recognize you for.</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 12px;">
+            <span style="font-size: 1.3rem; flex-shrink: 0;">🌍</span>
+            <div>
+              <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Mission — What the World Needs</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">Problems you care about solving. The impact you want to have on others.</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px;">
+            <span style="font-size: 1.3rem; flex-shrink: 0;">💰</span>
+            <div>
+              <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Vocation — What You Can Be Paid For</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">A career that not only fulfills you but also provides financial stability.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW OUR AI WORKS -->
+  <section style="padding: 80px 5%; background: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div class="section-header">
+        <div class="section-tag">⚙️ Technology</div>
+        <h2>How Our <span class="gradient-text">AI Works</span></h2>
+        <p>We built a sophisticated career-matching system that maps your unique profile to the best career paths.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="card-icon">📊</div>
+          <h3>Adaptive Questioning</h3>
+          <p>Our system starts with broad questions. Based on your answers, it asks increasingly specific follow-up questions to understand your unique profile.</p>
+        </div>
+        <div class="card reveal stagger-1">
+          <div class="card-icon">🔬</div>
+          <h3>Ikigai Mapping</h3>
+          <p>Each answer is mapped to one or more of the four Ikigai pillars. We calculate your strength in each dimension to build your personal Ikigai score.</p>
+        </div>
+        <div class="card reveal stagger-2">
+          <div class="card-icon">🎯</div>
+          <h3>Career Matching</h3>
+          <p>Your Ikigai profile is compared against 50+ career paths using our weighted scoring algorithm, giving you a precise match percentage for each.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM / TRANSPARENCY SECTION -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-tag">👥 Transparency</div>
+      <h2>Built With <span class="gradient-text">Purpose</span></h2>
+      <p>This platform is built by developers and educators who believe every teenager deserves clarity about their future.</p>
+    </div>
+    
+    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; padding: 40px; text-align: center; max-width: 700px; margin: 0 auto;" class="reveal">
+      <div style="font-size: 3rem; margin-bottom: 16px;">🤖</div>
+      <h3 style="font-size: 1.4rem; margin-bottom: 12px;">About Our AI</h3>
+      <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
+        <em>"Based on your profile..."</em> — this phrase comes from our analysis engine that uses 
+        a combination of career research data, psychology frameworks (like Holland Codes and MBTI concepts), 
+        and modern machine learning to provide accurate, personalized guidance.
+      </p>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        Your results are generated through systematic analysis — not random suggestions. 
+        Every recommendation is backed by real-world career data and research.
+      </p>
+      <div style="margin-top: 24px;">
+        <a href="assessment.html" class="btn btn-primary">Try the Assessment →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 12px;"><span class="nav-logo-icon">🌸</span>Ikigai for Teens</div>
+        <p>Helping teenagers around the world discover their purpose.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="assessment.html">Take Assessment</a>
+        <a href="results.html">View Results</a>
+        <a href="resources.html">Resources</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <a href="assessment.html">Career Quiz</a>
+        <a href="results.html">Sample Results</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Ikigai for Teens. Made with ❤️ to help the next generation find their purpose.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+</body>
+</html>

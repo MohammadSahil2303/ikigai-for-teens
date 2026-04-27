@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Resources — Ikigai for Teens</title>
+  <meta name="description" content="Curated resources, courses, and tools to help you start your career journey.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon">🌸</span>
+      Ikigai<span style="color: var(--text-secondary); font-weight: 400;"> for Teens</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="about.html" id="nav-about">About</a></li>
+      <li><a href="assessment.html" id="nav-assess">Assessment</a></li>
+      <li><a href="results.html" id="nav-results">Results</a></li>
+      <li><a href="resources.html" class="active" id="nav-resources">Resources</a></li>
+      <li><a href="contact.html" id="nav-contact">Contact</a></li>
+      <li><a href="assessment.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">🚀 Start Quiz</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="dark-mode-btn" id="darkModeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-badge" style="justify-content: center;"><span>📚</span> Learning Resources</div>
+    <h1>Explore <span class="gradient-text">Career Paths</span></h1>
+    <p>Curated resources, free courses, and tools to help you take the first step on your career journey.</p>
+  </section>
+
+  <!-- RESOURCE CATEGORIES -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-tag">🗂️ Categories</div>
+      <h2>Browse by <span class="gradient-text">Field</span></h2>
+      <p>Find resources for the career area that interests you most.</p>
+    </div>
+
+    <div class="grid-3">
+      <!-- Technology -->
+      <div class="card reveal">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(124,58,237,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(124,58,237,0.3);">💻</div>
+          <h3 style="margin: 0;">Technology</h3>
+        </div>
+        <p style="margin-bottom: 16px;">Programming, AI, cybersecurity, and more. The world's fastest-growing industry.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="https://www.khanacademy.org/computing" target="_blank" rel="noopener" style="color: var(--accent-violet); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(124,58,237,0.08); transition: background 0.2s;">🔗 Khan Academy — Coding <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://cs50.harvard.edu/x/2024/" target="_blank" rel="noopener" style="color: var(--accent-violet); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(124,58,237,0.08); transition: background 0.2s;">🔗 Harvard CS50 Course <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener" style="color: var(--accent-violet); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(124,58,237,0.08); transition: background 0.2s;">🔗 freeCodeCamp <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+        </div>
+      </div>
+
+      <!-- Healthcare -->
+      <div class="card reveal stagger-1">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(16,185,129,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(16,185,129,0.3);">🏥</div>
+          <h3 style="margin: 0;">Healthcare</h3>
+        </div>
+        <p style="margin-bottom: 16px;">Medicine, nursing, psychology, public health. Make a real difference in people's lives.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="https://www.coursera.org/browse/health" target="_blank" rel="noopener" style="color: var(--accent-green); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(16,185,129,0.08);">🔗 Coursera Health Courses <span style="margin-left: auto; color: var(--text-muted);">Free Audit</span></a>
+          <a href="https://www.who.int/training" target="_blank" rel="noopener" style="color: var(--accent-green); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(16,185,129,0.08);">🔗 WHO Training Resources <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://ocw.mit.edu/courses/biology/" target="_blank" rel="noopener" style="color: var(--accent-green); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(16,185,129,0.08);">🔗 MIT OpenCourseWare Biology <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+        </div>
+      </div>
+
+      <!-- Creative Arts -->
+      <div class="card reveal stagger-2">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(236,72,153,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(236,72,153,0.3);">🎨</div>
+          <h3 style="margin: 0;">Creative Arts</h3>
+        </div>
+        <p style="margin-bottom: 16px;">Design, animation, music, writing. Turn creativity into a fulfilling and profitable career.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="https://www.coursera.org/specializations/graphic-design" target="_blank" rel="noopener" style="color: var(--accent-pink); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(236,72,153,0.08);">🔗 Graphic Design (Coursera) <span style="margin-left: auto; color: var(--text-muted);">Free Audit</span></a>
+          <a href="https://www.youtube.com/c/AdobeCreativeCloud" target="_blank" rel="noopener" style="color: var(--accent-pink); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(236,72,153,0.08);">🔗 Adobe Creative Cloud YouTube <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://www.canva.com/designschool/" target="_blank" rel="noopener" style="color: var(--accent-pink); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(236,72,153,0.08);">🔗 Canva Design School <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+        </div>
+      </div>
+
+      <!-- Business -->
+      <div class="card reveal stagger-1">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(245,158,11,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(245,158,11,0.3);">💼</div>
+          <h3 style="margin: 0;">Business</h3>
+        </div>
+        <p style="margin-bottom: 16px;">Entrepreneurship, marketing, finance, management. Build, grow, and lead organizations.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="https://www.coursera.org/specializations/wharton-business-foundations" target="_blank" rel="noopener" style="color: var(--accent-orange); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(245,158,11,0.08);">🔗 Wharton Business Basics <span style="margin-left: auto; color: var(--text-muted);">Free Audit</span></a>
+          <a href="https://learndigital.withgoogle.com/" target="_blank" rel="noopener" style="color: var(--accent-orange); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(245,158,11,0.08);">🔗 Google Digital Marketing <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://www.khanacademy.org/economics-finance-domain" target="_blank" rel="noopener" style="color: var(--accent-orange); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(245,158,11,0.08);">🔗 Khan Academy Finance <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+        </div>
+      </div>
+
+      <!-- Science & Engineering -->
+      <div class="card reveal stagger-2">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(6,182,212,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(6,182,212,0.3);">🔬</div>
+          <h3 style="margin: 0;">Science & Engineering</h3>
+        </div>
+        <p style="margin-bottom: 16px;">Physics, chemistry, engineering, environmental science. Understand and shape the world.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="https://ocw.mit.edu/" target="_blank" rel="noopener" style="color: var(--accent-cyan); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(6,182,212,0.08);">🔗 MIT OpenCourseWare <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://www.khanacademy.org/science" target="_blank" rel="noopener" style="color: var(--accent-cyan); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(6,182,212,0.08);">🔗 Khan Academy Science <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://www.coursera.org/browse/physical-science-and-engineering" target="_blank" rel="noopener" style="color: var(--accent-cyan); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(6,182,212,0.08);">🔗 Engineering on Coursera <span style="margin-left: auto; color: var(--text-muted);">Free Audit</span></a>
+        </div>
+      </div>
+
+      <!-- Law & Social Sciences -->
+      <div class="card reveal stagger-3">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(139,92,246,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(139,92,246,0.3);">⚖️</div>
+          <h3 style="margin: 0;">Law & Social Science</h3>
+        </div>
+        <p style="margin-bottom: 16px;">Law, psychology, sociology, political science. Understand and improve human systems.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="https://www.coursera.org/specializations/introduction-law" target="_blank" rel="noopener" style="color: var(--accent-violet); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(139,92,246,0.08);">🔗 Introduction to Law <span style="margin-left: auto; color: var(--text-muted);">Free Audit</span></a>
+          <a href="https://www.khanacademy.org/social-sciences" target="_blank" rel="noopener" style="color: var(--accent-violet); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(139,92,246,0.08);">🔗 Khan Academy Social Science <span style="margin-left: auto; color: var(--text-muted);">Free</span></a>
+          <a href="https://www.coursera.org/browse/social-sciences/psychology" target="_blank" rel="noopener" style="color: var(--accent-violet); font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 8px; background: rgba(139,92,246,0.08);">🔗 Psychology Courses <span style="margin-left: auto; color: var(--text-muted);">Free Audit</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKS SECTION -->
+  <section style="padding: 80px 5%; background: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div class="section-header">
+        <div class="section-tag">📖 Must-Read Books</div>
+        <h2>Books That <span class="gradient-text">Change Lives</span></h2>
+        <p>These books have helped millions of people find clarity, purpose, and direction in their careers.</p>
+      </div>
+
+      <div class="grid-2">
+        <div style="display: flex; align-items: flex-start; gap: 20px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;" class="reveal">
+          <div style="width: 60px; height: 80px; border-radius: 8px; background: var(--gradient-purple); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">📘</div>
+          <div>
+            <h4 style="margin-bottom: 6px;">Ikigai: The Japanese Secret to a Long and Happy Life</h4>
+            <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Héctor García & Francesc Miralles</div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">The book that introduced the concept of Ikigai to the Western world. Essential reading.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 20px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;" class="reveal stagger-1">
+          <div style="width: 60px; height: 80px; border-radius: 8px; background: linear-gradient(135deg, #ec4899, #f59e0b); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">📗</div>
+          <div>
+            <h4 style="margin-bottom: 6px;">So Good They Can't Ignore You</h4>
+            <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Cal Newport</div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Why following your passion is bad advice, and what you should do instead to build a career you love.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 20px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;" class="reveal stagger-2">
+          <div style="width: 60px; height: 80px; border-radius: 8px; background: linear-gradient(135deg, #06b6d4, #3b82f6); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">📙</div>
+          <div>
+            <h4 style="margin-bottom: 6px;">Designing Your Life</h4>
+            <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Bill Burnett & Dave Evans (Stanford)</div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Apply design thinking to building your career and life. Used in Stanford's most popular class.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 20px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;" class="reveal stagger-3">
+          <div style="width: 60px; height: 80px; border-radius: 8px; background: linear-gradient(135deg, #10b981, #059669); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">📕</div>
+          <div>
+            <h4 style="margin-bottom: 6px;">Mindset: The New Psychology of Success</h4>
+            <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px;">Carol S. Dweck</div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">How developing a growth mindset transforms your ability to learn anything and succeed in any career.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 80px 5%; text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto;" class="reveal">
+      <div style="font-size: 3rem; margin-bottom: 16px;">🚀</div>
+      <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 16px;">Ready to <span class="gradient-text">Start Learning?</span></h2>
+      <p style="color: var(--text-secondary); margin-bottom: 32px;">First, discover which career path is right for you with our free assessment.</p>
+      <a href="assessment.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 16px 40px;">🎯 Take the Career Quiz</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 12px;"><span class="nav-logo-icon">🌸</span>Ikigai for Teens</div>
+        <p>Helping teenagers around the world discover their purpose.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="assessment.html">Take Assessment</a>
+        <a href="results.html">View Results</a>
+        <a href="resources.html">Resources</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="resources.html">Free Courses</a>
+        <a href="resources.html">Books</a>
+        <a href="resources.html">Tools</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Ikigai for Teens. Made with ❤️ to help the next generation find their purpose.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+</body>
+</html>

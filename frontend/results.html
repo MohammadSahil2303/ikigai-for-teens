@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Career Results — Ikigai for Teens</title>
+  <meta name="description" content="View your personalized career matches based on your Ikigai profile.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Roadmap Modal ── */
+    .roadmap-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .roadmap-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .roadmap-modal {
+      background: var(--bg-primary);
+      border-radius: 28px 28px 0 0;
+      width: 100%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px 36px 48px;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+    .roadmap-modal-overlay.open .roadmap-modal {
+      transform: translateY(0);
+    }
+    .modal-drag-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--border-color);
+      border-radius: 2px;
+      margin: 0 auto 24px;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+    .modal-close-btn:hover {
+      background: var(--accent-purple);
+      border-color: var(--accent-purple);
+      color: white;
+      transform: scale(1.1);
+    }
+    .modal-career-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .modal-career-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+    .modal-career-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .modal-career-category {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+    }
+    .modal-section-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      margin-top: 28px;
+    }
+    /* Timeline */
+    .roadmap-timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+    .roadmap-timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-purple), var(--accent-cyan));
+      border-radius: 2px;
+    }
+    .timeline-phase {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .timeline-phase:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -24px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 3px solid var(--bg-primary);
+      box-shadow: 0 0 0 2px var(--accent-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-phase-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-violet);
+      margin-bottom: 8px;
+    }
+    .timeline-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.2s ease;
+    }
+    .timeline-step:hover { border-color: var(--accent-purple); }
+    .timeline-step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--gradient-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .step-content { flex: 1; }
+    .step-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+    .step-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    /* Skill pills */
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-pill {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    /* Resources */
+    .resource-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .resource-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+    }
+    .resource-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    /* Card click affordance */
+    .career-card {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    .career-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15) !important;
+    }
+    .view-roadmap-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-violet);
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+    }
+    .view-roadmap-hint::after {
+      content: '→';
+      margin-left: auto;
+      font-size: 1rem;
+    }
+    .results-wrapper {
+      min-height: 100vh;
+      background: var(--gradient-hero);
+      padding: 100px 5% 60px;
+    }
+
+    .results-layout {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Ikigai radar chart area */
+    .radar-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    .radar-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ikigai-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ikigai-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ikigai-bar-label {
+      width: 120px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ikigai-bar-track {
+      flex: 1;
+      height: 10px;
+      background: var(--border-color);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .ikigai-bar-fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+    }
+
+    .ikigai-bar-pct {
+      width: 40px;
+      text-align: right;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      flex-shrink: 0;
+    }
+
+    /* Sample results message */
+    .sample-notice {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: var(--accent-purple);
+      border-color: var(--accent-purple);
+      color: white;
+    }
+
+    .share-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon">🌸</span>
+      Ikigai<span style="color: var(--text-secondary); font-weight: 400;"> for Teens</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="about.html" id="nav-about">About</a></li>
+      <li><a href="assessment.html" id="nav-assess">Assessment</a></li>
+      <li><a href="results.html" class="active" id="nav-results">Results</a></li>
+      <li><a href="resources.html" id="nav-resources">Resources</a></li>
+      <li><a href="contact.html" id="nav-contact">Contact</a></li>
+      <li><a href="assessment.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">🚀 Retake Quiz</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="dark-mode-btn" id="darkModeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- RESULTS WRAPPER -->
+  <div class="results-wrapper">
+    <div class="results-layout">
+
+      <!-- Sample notice (shows when no real data) -->
+      <div class="sample-notice" id="sampleNotice">
+        <span style="font-size: 1.2rem;">ℹ️</span>
+        <span>Showing <strong>sample results</strong>. <a href="assessment.html" style="color: var(--accent-violet);">Take the assessment</a> to see your personalized career matches!</span>
+      </div>
+
+      <!-- Result heading (replaced by JS if real data exists) -->
+      <div class="result-hero" id="resultHero">
+        <div style="position: relative; z-index: 1;">
+          <div style="font-size: 3rem; margin-bottom: 12px;">🌸</div>
+          <h2 id="resultName">Based on your profile...</h2>
+          <p id="resultSubtitle">Here are your top career matches based on your Ikigai analysis</p>
+        </div>
+      </div>
+
+      <!-- Ikigai Profile Bars -->
+      <div class="radar-container reveal">
+        <div class="radar-title">📊 Your Ikigai Profile</div>
+        <div class="ikigai-bars" id="ikigaiBars">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab active" onclick="filterCareers('all', this)" id="filterAll">All Careers</button>
+        <button class="filter-tab" onclick="filterCareers('technology', this)" id="filterTech">💻 Technology</button>
+        <button class="filter-tab" onclick="filterCareers('healthcare', this)" id="filterHealth">🏥 Healthcare</button>
+        <button class="filter-tab" onclick="filterCareers('creative', this)" id="filterCreative">🎨 Creative</button>
+        <button class="filter-tab" onclick="filterCareers('business', this)" id="filterBusiness">💼 Business</button>
+        <button class="filter-tab" onclick="filterCareers('science', this)" id="filterScience">🔬 Science</button>
+      </div>
+
+      <!-- Career Cards Grid -->
+      <div class="grid-2" id="careerGrid">
+        <!-- Career cards rendered by JS -->
+      </div>
+
+      <!-- Share section -->
+      <div class="share-section reveal">
+        <h3 style="margin-bottom: 8px;">📤 Share Your Results</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">Tell your friends about Ikigai for Teens!</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-secondary" onclick="shareResults()" id="shareBtn" style="padding: 12px 24px; font-size: 0.9rem;">🔗 Copy Link</button>
+          <a href="assessment.html" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.9rem;">🔄 Retake Quiz</a>
+          <button class="btn btn-secondary" onclick="downloadResults()" id="downloadBtn" style="padding: 12px 24px; font-size: 0.9rem;">📥 Download PDF</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Loading overlay -->
+  <!-- ROADMAP MODAL -->
+  <div class="roadmap-modal-overlay" id="roadmapOverlay" onclick="closeRoadmapModal(event)">
+    <div class="roadmap-modal" id="roadmapModal">
+      <div class="modal-drag-handle"></div>
+      <button class="modal-close-btn" onclick="closeModal()" aria-label="Close roadmap">✕</button>
+      <!-- Content injected by JS -->
+      <div id="roadmapContent"></div>
+    </div>
+  </div>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingText">Analyzing your profile...</div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+  <script src="results.js"></script>
+</body>
+</html>

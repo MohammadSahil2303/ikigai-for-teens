@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!--
+  📚 ASSESSMENT PAGE LESSON:
+  This page has the SMART QUIZ.
+  It uses JavaScript to show one question at a time,
+  remember your answers, and adapt follow-up questions.
+  
+  The quiz has 3 phases:
+  Phase 1: Basic interest questions (everyone sees these)
+  Phase 2: Adaptive follow-ups (based on your phase 1 answers)
+  Phase 3: Values questions
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Assessment — Ikigai for Teens</title>
+  <meta name="description" content="Take our adaptive career assessment quiz to discover your ideal career path based on your interests, skills, and values.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific styles for assessment */
+    .assessment-wrapper {
+      min-height: 100vh;
+      background: var(--gradient-hero);
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: var(--accent-purple);
+      border-radius: 50%;
+      opacity: 0.05;
+      top: -100px;
+      right: -100px;
+    }
+
+    /* Phase indicator */
+    .phase-indicator {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .phase-dot {
+      width: 40px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border-color);
+      transition: all 0.4s ease;
+    }
+
+    .phase-dot.active { background: var(--gradient-purple); }
+    .phase-dot.done { background: var(--accent-green); }
+
+    /* Welcome / Intro screen */
+    .intro-screen {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .intro-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 30px 0;
+    }
+
+    .intro-feature {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px 14px;
+      text-align: center;
+    }
+
+    .intro-feature .feat-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .intro-feature .feat-label { font-size: 0.82rem; color: var(--text-secondary); }
+    .intro-feature .feat-value { font-size: 0.92rem; font-weight: 700; }
+
+    /* Multi-select options (for interest categories) */
+    .multi-select-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .tag-option {
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--input-bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-option:hover {
+      border-color: var(--accent-purple);
+      background: rgba(124, 58, 237, 0.08);
+    }
+
+    .tag-option.selected {
+      border-color: var(--accent-purple);
+      background: rgba(124, 58, 237, 0.15);
+      color: var(--accent-violet);
+    }
+
+    .tag-option .tag-icon { font-size: 1.5rem; }
+
+    /* Slider input */
+    .slider-container { margin-bottom: 20px; }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border-color);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-purple);
+      box-shadow: 0 0 10px rgba(124,58,237,0.5);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .slider-value {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-violet);
+      margin-bottom: 12px;
+    }
+
+    /* Completion screen */
+    .completion-screen {
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .completion-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--gradient-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 40px rgba(124,58,237,0.4);
+      animation: bounceIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    /* ── Dropdown / select fix for dark theme ── */
+    .form-select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+      background: #1e1535;
+      color: #e2d9f3;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239b72ef' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-select:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+    }
+
+    .form-select option {
+      background: #1e1535;
+      color: #e2d9f3;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+      background: #1e1535;
+      color: #e2d9f3;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-input::placeholder { color: #6b5a8a; }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon">🌸</span>
+      Ikigai<span style="color: var(--text-secondary); font-weight: 400;"> for Teens</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="about.html" id="nav-about">About</a></li>
+      <li><a href="assessment.html" class="active" id="nav-assess">Assessment</a></li>
+      <li><a href="results.html" id="nav-results">Results</a></li>
+      <li><a href="resources.html" id="nav-resources">Resources</a></li>
+      <li><a href="contact.html" id="nav-contact">Contact</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="dark-mode-btn" id="darkModeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- ASSESSMENT WRAPPER -->
+  <div class="assessment-wrapper">
+    <div class="assessment-container" id="assessmentContainer">
+
+      <!-- ─────────────────────────────────────
+           SCREEN 0: INTRO / WELCOME
+           ───────────────────────────────────── -->
+      <div id="screen-intro" class="intro-screen">
+        <div class="hero-badge" style="justify-content: center; margin-bottom: 20px;">
+          <span>🧠</span> AI-Powered Assessment
+        </div>
+        <h1 style="font-family: 'Poppins', sans-serif; font-size: 2.4rem; font-weight: 800; margin-bottom: 16px;">
+          Discover Your <span class="gradient-text">Ikigai</span>
+        </h1>
+        <p style="color: var(--text-secondary); margin-bottom: 30px;">
+          Answer a few thoughtful questions and our system will analyze your unique profile 
+          to recommend the perfect career for you.
+        </p>
+
+        <div class="intro-features">
+          <div class="intro-feature">
+            <div class="feat-icon">⏱️</div>
+            <div class="feat-value">~5 min</div>
+            <div class="feat-label">Duration</div>
+          </div>
+          <div class="intro-feature">
+            <div class="feat-icon">🎯</div>
+            <div class="feat-value">Adaptive</div>
+            <div class="feat-label">Questions</div>
+          </div>
+          <div class="intro-feature">
+            <div class="feat-icon">🔒</div>
+            <div class="feat-value">Private</div>
+            <div class="feat-label">Your data</div>
+          </div>
+        </div>
+
+        <!-- Name input before starting -->
+        <div class="question-card" style="text-align: left; margin-bottom: 24px;">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="userName">Your First Name <span class="required">*</span></label>
+            <input type="text" class="form-input" id="userName" placeholder="e.g. Arjun" maxlength="30" autocomplete="off">
+            <div class="form-error" id="nameError">Please enter your name to begin.</div>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="userAge">Your Age <span class="required">*</span></label>
+            <select class="form-select" id="userAge">
+              <option value="">Select your age...</option>
+              <option value="13">13 years old</option>
+              <option value="14">14 years old</option>
+              <option value="15">15 years old</option>
+              <option value="16">16 years old</option>
+              <option value="17">17 years old</option>
+              <option value="18">18 years old</option>
+              <option value="19">19 years old</option>
+              <option value="20">20 years old</option>
+              <option value="21">21 years old</option>
+              <option value="22">22 years old</option>
+              <option value="23">23 years old</option>
+              <option value="24">24 years old</option>
+              <option value="25">25 years old</option>
+              <option value="26">26 years old</option>
+              <option value="27">27 years old</option>
+              <option value="28">28 years old</option>
+              <option value="29">29 years old</option>
+              <option value="30">30 years old</option>
+            </select>
+            <div class="form-error" id="ageError">Please select your age.</div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary full-width" id="startAssessmentBtn" style="font-size: 1.05rem; padding: 16px;">
+          🚀 Begin My Journey
+        </button>
+      </div>
+
+      <!-- ─────────────────────────────────────
+           SCREEN 1: QUIZ QUESTIONS
+           ───────────────────────────────────── -->
+      <div id="screen-quiz" class="hidden">
+        <!-- Phase indicator dots -->
+        <div class="phase-indicator">
+          <div class="phase-dot" id="phase-1" title="Interests"></div>
+          <div class="phase-dot" id="phase-2" title="Skills"></div>
+          <div class="phase-dot" id="phase-3" title="Values"></div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-bar-container">
+          <div class="progress-info">
+            <span id="progressLabel">Question 1 of 12</span>
+            <span id="progressPhase">Phase: Interests</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Question area -->
+        <div class="question-card" id="questionCard">
+          <div class="question-number" id="questionNumber">QUESTION 1</div>
+          <div class="question-text" id="questionText">Loading...</div>
+          <div class="question-sub" id="questionSub"></div>
+          <!-- Options rendered by JavaScript here -->
+          <div id="optionsArea"></div>
+          <!-- Navigation buttons -->
+          <div class="question-nav">
+            <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" style="padding: 12px 24px;">← Back</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="padding: 12px 28px;">Next →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────
+           SCREEN 2: COMPLETION
+           ───────────────────────────────────── -->
+      <div id="screen-complete" class="hidden completion-screen">
+        <div class="completion-icon">🌸</div>
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 12px;">
+          Assessment Complete!
+        </h2>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;" id="completionMsg">
+          Amazing job! We've analyzed your answers and discovered some fascinating things about your future.
+        </p>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-bottom: 28px;">
+          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 10px;">Your Ikigai Profile Strength</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;" id="ikigaiScoreDisplay">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+        <button class="btn btn-primary full-width" onclick="viewResults()" style="font-size: 1.05rem; padding: 16px; margin-bottom: 14px;">
+          🎯 See My Career Results
+        </button>
+        <button class="btn btn-secondary full-width" onclick="retakeAssessment()" style="padding: 14px;">
+          🔄 Retake Assessment
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingText">Analyzing your profile...</div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!--
+    📚 LESSON: defer attribute
+    defer means "load this JS file but don't run it until HTML is fully loaded"
+    This is the safest way to include scripts.
+  -->
+  <script src="script.js"></script>
+  <script src="assessment.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Ikigai for Teens</title>
+  <meta name="description" content="Get in touch with the Ikigai for Teens team. We'd love to hear from you!">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+    .contact-info-item:hover {
+      border-color: var(--border-hover);
+      transform: translateX(4px);
+    }
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("LgDGk1OqOdtSoiOQ7"); // paste here
+})();
+</script>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-icon">🌸</span>
+      Ikigai<span style="color: var(--text-secondary); font-weight: 400;"> for Teens</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="about.html" id="nav-about">About</a></li>
+      <li><a href="assessment.html" id="nav-assess">Assessment</a></li>
+      <li><a href="results.html" id="nav-results">Results</a></li>
+      <li><a href="resources.html" id="nav-resources">Resources</a></li>
+      <li><a href="contact.html" class="active" id="nav-contact">Contact</a></li>
+      <li><a href="assessment.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">🚀 Start Quiz</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="dark-mode-btn" id="darkModeBtn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-badge" style="justify-content: center;"><span>📬</span> Get in Touch</div>
+    <h1>Contact <span class="gradient-text">Our Team</span></h1>
+    <p>Have a question, feedback, or just want to say hello? We'd love to hear from you.</p>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section">
+    <div class="contact-grid">
+      <!-- Left: Contact Info -->
+      <div>
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.6rem; margin-bottom: 8px;">Let's <span class="gradient-text">Connect</span></h2>
+        <p style="color: var(--text-secondary); margin-bottom: 28px; font-size: 0.92rem;">We respond to all messages within 24 hours. No question is too small!</p>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Email Us</div>
+            <div style="color: var(--text-secondary); font-size: 0.88rem;">sahilansari181006@gmail.com</div>
+            <div style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">We reply within 24 hours</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">🐦</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Twitter / X</div>
+            <div style="color: var(--text-secondary); font-size: 0.88rem;">@IkigaiTeens</div>
+            <div style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">DMs are open!</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Instagram</div>
+            <div style="color: var(--text-secondary); font-size: 0.88rem;">@ikigai.teens</div>
+            <div style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">Follow for career tips</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">Location</div>
+            <div style="color: var(--text-secondary); font-size: 0.88rem;">Global — We're everywhere!</div>
+            <div style="color: var(--text-muted); font-size: 0.82rem; margin-top: 2px;">Serving teens worldwide 🌍</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="card" style="padding: 36px;">
+        <h3 style="margin-bottom: 6px; font-size: 1.2rem;">Send Us a Message</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 28px;">Fill in the form below and we'll get back to you ASAP.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="grid-2" style="gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Your Name <span class="required">*</span></label>
+              <input type="text" class="form-input" id="contactName" name="name" placeholder="Arjun Sharma" required maxlength="60">
+              <div class="form-error" id="contactNameError">Please enter your name.</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactAge">Your Age <span class="required">*</span></label>
+              <select class="form-select" id="contactAge" name="age" required>
+                <option value="">Select...</option>
+                <option value="13-15">13–15</option>
+                <option value="16-18">16–18</option>
+                <option value="19-21">19–21</option>
+                <option value="parent">Parent/Guardian</option>
+                <option value="teacher">Teacher/Counselor</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="form-error" id="contactAgeError">Please select your age group.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactEmail">Email Address <span class="required">*</span></label>
+            <input type="email" class="form-input" id="contactEmail" name="email" placeholder="arjun@example.com" required>
+            <div class="form-error" id="contactEmailError">Please enter a valid email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactSubject">Subject <span class="required">*</span></label>
+            <select class="form-select" id="contactSubject" name="subject" required>
+              <option value="">What is this about?</option>
+              <option value="general">General Question</option>
+              <option value="assessment">Assessment Help</option>
+              <option value="results">Understanding My Results</option>
+              <option value="bug">Report a Bug</option>
+              <option value="feedback">Feedback / Suggestions</option>
+              <option value="partnership">Partnership Inquiry</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="form-error" id="contactSubjectError">Please select a subject.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Your Message <span class="required">*</span></label>
+            <textarea class="form-textarea" id="contactMessage" name="message" placeholder="Tell us how we can help you..." required minlength="20"></textarea>
+            <div class="form-error" id="contactMessageError">Please write your message (at least 20 characters).</div>
+          </div>
+
+          <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px;">
+            <input type="checkbox" id="agreePrivacy" style="margin-top: 3px; cursor: pointer; accent-color: var(--accent-purple);">
+            <label for="agreePrivacy" style="font-size: 0.85rem; color: var(--text-secondary); cursor: pointer; line-height: 1.5;">
+              I agree to the <a href="#" style="color: var(--accent-violet);">Privacy Policy</a> and consent to being contacted regarding my inquiry.
+            </label>
+          </div>
+          <div class="form-error" id="privacyError">Please agree to the privacy policy.</div>
+
+          <button type="submit" class="btn btn-primary full-width" id="submitContactBtn" style="padding: 16px; font-size: 1rem;">
+            📬 Send Message
+          </button>
+
+          <!-- Success message (hidden initially) -->
+          <div id="contactSuccess" style="display: none; margin-top: 20px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 12px; padding: 20px; text-align: center;">
+            <div style="font-size: 2rem; margin-bottom: 8px;">✅</div>
+            <div style="font-weight: 700; margin-bottom: 4px; color: var(--accent-green);">Message Sent!</div>
+            <div style="color: var(--text-secondary); font-size: 0.88rem;">Thanks for reaching out! We'll reply within 24 hours.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section style="padding: 60px 5% 80px; background: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <div class="section-header">
+        <div class="section-tag">❓ FAQ</div>
+        <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;" id="faqList">
+        <!-- FAQ items — accordion behavior by JS -->
+        <div class="faq-item card" style="cursor: pointer; padding: 20px 24px;" onclick="toggleFaq(this)">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-weight: 700; font-size: 0.95rem;">Is Ikigai for Teens completely free?</div>
+            <span class="faq-icon" style="font-size: 1.2rem; transition: transform 0.3s;">+</span>
+          </div>
+          <div class="faq-answer" style="display: none; margin-top: 14px; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+            Yes! 100% free, always. We believe every teenager deserves access to quality career guidance regardless of their financial situation. No sign-up, no subscription, no hidden fees.
+          </div>
+        </div>
+
+        <div class="faq-item card" style="cursor: pointer; padding: 20px 24px;" onclick="toggleFaq(this)">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-weight: 700; font-size: 0.95rem;">How accurate are the career recommendations?</div>
+            <span class="faq-icon" style="font-size: 1.2rem; transition: transform 0.3s;">+</span>
+          </div>
+          <div class="faq-answer" style="display: none; margin-top: 14px; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+            Our system analyzes your responses across multiple dimensions and cross-references them with career research data. While no system is 100% accurate, user surveys show 95% of users feel the results reflect their actual interests and abilities.
+          </div>
+        </div>
+
+        <div class="faq-item card" style="cursor: pointer; padding: 20px 24px;" onclick="toggleFaq(this)">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-weight: 700; font-size: 0.95rem;">How long does the assessment take?</div>
+            <span class="faq-icon" style="font-size: 1.2rem; transition: transform 0.3s;">+</span>
+          </div>
+          <div class="faq-answer" style="display: none; margin-top: 14px; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+            The assessment takes about 3-5 minutes. We keep it short and impactful — each question is designed to reveal something meaningful about your career fit.
+          </div>
+        </div>
+
+        <div class="faq-item card" style="cursor: pointer; padding: 20px 24px;" onclick="toggleFaq(this)">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-weight: 700; font-size: 0.95rem;">Is my data safe and private?</div>
+            <span class="faq-icon" style="font-size: 1.2rem; transition: transform 0.3s;">+</span>
+          </div>
+          <div class="faq-answer" style="display: none; margin-top: 14px; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+            Absolutely. Your answers are processed securely and we never share or sell your data. You don't need to create an account, and everything is stored locally on your device.
+          </div>
+        </div>
+
+        <div class="faq-item card" style="cursor: pointer; padding: 20px 24px;" onclick="toggleFaq(this)">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-weight: 700; font-size: 0.95rem;">Can I retake the assessment?</div>
+            <span class="faq-icon" style="font-size: 1.2rem; transition: transform 0.3s;">+</span>
+          </div>
+          <div class="faq-answer" style="display: none; margin-top: 14px; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+            Yes! You can retake the assessment as many times as you want. Your interests change as you grow — it's healthy to revisit every 6 months to see how your profile evolves.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 12px;"><span class="nav-logo-icon">🌸</span>Ikigai for Teens</div>
+        <p>Helping teenagers around the world discover their purpose.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="assessment.html">Take Assessment</a>
+        <a href="results.html">View Results</a>
+        <a href="resources.html">Resources</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="contact.html">Help Center</a>
+        <a href="contact.html">Report a Bug</a>
+        <a href="contact.html">Feedback</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Ikigai for Teens. Made with ❤️ to help the next generation find their purpose.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="script.js"></script>
+</body>
+
+<script src="script.js"></script>
+
+<!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("LgDGk1OqOdtSoiOQ7"); // paste your key here
+})();
+</script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const params = {
+    name: document.getElementById("contactName").value,
+    email: document.getElementById("contactEmail").value,
+    age: document.getElementById("contactAge").value,
+    subject: document.getElementById("contactSubject").value,
+    message: document.getElementById("contactMessage").value,
+  };
+
+  emailjs.send("service_xjwhzh5", "template_l7mu0mi", params)
+    .then(function(response) {
+      document.getElementById("contactSuccess").style.display = "block";
+      document.getElementById("contactForm").reset();
+    }, function(error) {
+      alert("Failed to send message. Try again.");
+    });
+});
+</script>
+
+</body>
+</html>
+
+</html>
